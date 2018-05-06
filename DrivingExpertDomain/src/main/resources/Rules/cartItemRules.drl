@@ -1,0 +1,23 @@
+package com.javacodegeeks.drools;
+import com.javacodegeeks.drools.Vehicle;
+import com.javacodegeeks.drools.VehicleRoute;
+import com.javacodegeeks.drools.RouteStructure;
+import com.javacodegeeks.drools.RouteStatus;
+import java.util.List;
+
+global List<RouteStructures> routeStructures;
+
+function String pendingItemKey(RouteStructure routeStructure) { 
+return routeStructure.getVehicleRoute().getVehicleOfRoute().getID();
+}
+//Is it out of stock?
+rule "Is Under Construction"
+when
+$routeStructure : RouteStructure(construction == true)
+then
+System.out.println("\nIs Under Construction Rule");
+System.out.println("************************************");
+//String error = "Can't process as " +  $routeStructure.getIntersectionType() + " is under construction" ;
+//System.out.println(error);
+end
+
